@@ -3,3 +3,7 @@ export type BannerType = {
 	subTitle: string;
 	imgUrl: string;
 };
+
+export type NavBarType = {
+	username: string;
+};
