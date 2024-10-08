@@ -1,12 +1,16 @@
 import videoData from "../data/videos.json";
 
-export const getVideos = async (searchQuery) => {
+export const getCommonVideos = async (url) => {
 	const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
 
 	try {
+		const BASE_URL = "youtube.googleapis.com/youtube/v3";
+
 		const response = await fetch(
-			`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${searchQuery}&type=video&key=${YOUTUBE_API_KEY}`
+			`https://${BASE_URL}/${url}&key=${YOUTUBE_API_KEY}`
 		);
+
+		// `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=US&key=${YOUTUBE_API_KEY}`
 
 		const data = await response.json();
 
@@ -27,4 +31,14 @@ export const getVideos = async (searchQuery) => {
 		console.error("Something went wrong with video library", error);
 		return [];
 	}
+};
+
+export const getVideos = (searchQuery) => {
+	const URL = `search?part=snippet&maxResults=25&q=${searchQuery}&type=video`;
+	return getCommonVideos(URL);
+};
+
+export const getPopularVideos = () => {
+	const URL = `videos?part=snippet&maxResults=25&%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=US`;
+	return getCommonVideos(URL);
 };
