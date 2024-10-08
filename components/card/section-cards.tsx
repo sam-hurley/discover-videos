@@ -14,7 +14,3 @@ export default function SectionCards(props: { title: string }) {
 		</section>
 	);
 }
-
-// <Card imgUrl="/static/clifford.webp" size="large" />
-// <Card size="medium" />
-// <Card imgUrl="/static/clifford.webp" size="small" />
