@@ -11,4 +11,5 @@ export type NavBarType = {
 export type ImageType = {
 	imgUrl: string;
 	size: string;
+	id: number;
 };
