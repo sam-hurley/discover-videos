@@ -7,3 +7,8 @@ export type BannerType = {
 export type NavBarType = {
 	username: string;
 };
+
+export type ImageType = {
+	imgUrl: string;
+	size: string;
+};
