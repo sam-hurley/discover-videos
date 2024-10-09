@@ -11,6 +11,7 @@
   "dependencies": {
     "classnames": "^2.5.1",
     "framer-motion": "^11.11.1",
+    "magic-sdk": "^28.11.0",
     "next": "14.2.14",
     "react": "^18",
     "react-dom": "^18"
