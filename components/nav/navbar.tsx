@@ -29,17 +29,15 @@ export default function NavBar(props: NavBarType) {
 	return (
 		<div className={styles.container}>
 			<div className={styles.wrapper}>
-				<Link legacyBehavior href="/">
-					<a className={styles.logoLink}>
-						<div className={styles.logoWrapper}>
-							<Image
-								src="/static/netflix.svg"
-								alt="Netflix logo"
-								width={128}
-								height={34}
-							/>
-						</div>
-					</a>
+				<Link className={styles.logoLink} href="/">
+					<div className={styles.logoWrapper}>
+						<Image
+							src="/static/netflix.svg"
+							alt="Netflix logo"
+							width={128}
+							height={34}
+						/>
+					</div>
 				</Link>
 
 				<ul className={styles.navItems}>
