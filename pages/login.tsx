@@ -3,10 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Login.module.css";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 export default function Login() {
 	const [email, setEmail] = useState("");
 	const [userMsg, setUserMsg] = useState("");
+
+	const router = useRouter();
 
 	const handleOnChangeEmail = (e) => {
 		setUserMsg("");
@@ -19,7 +22,11 @@ export default function Login() {
 		console.log("click");
 		e.preventDefault();
 		if (email) {
-			//route to dashboard
+			if (email === "samhurley@gmail.com") {
+				router.push("/");
+			} else {
+				setUserMsg("Something went wrong logging in");
+			}
 		} else {
 			setUserMsg("Please enter valid email address");
 		}
