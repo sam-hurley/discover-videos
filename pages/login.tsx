@@ -22,7 +22,7 @@ export default function Login() {
 		console.log("click");
 		e.preventDefault();
 		if (email) {
-			if (email === "samhurley@gmail.com") {
+			if (email === "moricode49@hotmail.com") {
 				router.push("/");
 			} else {
 				setUserMsg("Something went wrong logging in");
