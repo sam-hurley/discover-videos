@@ -10,22 +10,22 @@ export default function App({ Component, pageProps }: AppProps) {
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
-		async function checkedLoggedIn() {
-			const isLoggedIn = await magic.user
-				.getMetadata()
-				.then(() => {
-					console.log("logged in");
-				})
-				.catch((error) => {
-					console.log(error);
-				});
-			if (isLoggedIn) {
-				router.push("/");
-			} else {
-				router.push("/login");
-			}
-		}
-		checkedLoggedIn();
+		// async function checkedLoggedIn() {
+		// 	const isLoggedIn = await magic.user
+		// 		.getMetadata()
+		// 		.then(() => {
+		// 			console.log("logged in");
+		// 		})
+		// 		.catch((error) => {
+		// 			console.log(error);
+		// 		});
+		// 	if (isLoggedIn) {
+		// 		router.push("/");
+		// 	} else {
+		// 		router.push("/login");
+		// 	}
+		// }
+		// checkedLoggedIn();
 	}, []);
 
 	useEffect(() => {
