@@ -16,7 +16,7 @@ export default function NavBar() {
 					console.log({ email });
 				}
 			} catch (error) {
-				console.log("Error retrieving email:", error);
+				console.error("Error retrieving email:", error);
 			}
 		}
 		getUsername();
@@ -38,6 +38,18 @@ export default function NavBar() {
 	const handleShowDropdown = (e) => {
 		e.preventDefault();
 		setShowDropdown(!showDropdown);
+	};
+
+	const handleSignOut = async (e) => {
+		e.preventDefault();
+		try {
+			await magic.user.logout();
+			console.log(await magic.user.isLoggedIn());
+			router.push("/login");
+		} catch (error) {
+			console.error("Error logging out", error);
+			router.push("/login");
+		}
 	};
 
 	return (
@@ -77,9 +89,10 @@ export default function NavBar() {
 						{showDropdown && (
 							<div className={styles.navDropdown}>
 								<div>
-									<Link legacyBehavior href="/login">
-										<a className={styles.linkName}>Sign Out</a>
-									</Link>
+									<a className={styles.linkName} onClick={handleSignOut}>
+										Sign Out
+									</a>
+
 									<div className={styles.lineWrapper}></div>
 								</div>
 							</div>
