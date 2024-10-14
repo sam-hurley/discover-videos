@@ -4,17 +4,34 @@ import clsx from "classnames";
 import Modal from "react-modal";
 Modal.setAppElement("#__next");
 
-export default function Video() {
-	const router = useRouter();
-
+export async function getStaticProps() {
 	const video = {
 		title: "Hi cute dog",
 		publishTime: "1990-01-01",
-		description:
-			"A big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dogA big red dog",
+		description: "A big red dogA big red dogA big red dogA big red dog",
 		channelTitle: "Paramount Pictures",
 		viewCount: 10000,
 	};
+
+	return {
+		props: {
+			video,
+		},
+		revalidate: 60, // In seconds
+	};
+}
+
+export async function getStaticPaths() {
+	const listOfVideos = ["mYfJxlgR2jw", "4zH5iYM4wJo", "KCPEHsAViiQ"];
+	const paths = listOfVideos.map((videoId) => ({
+		params: { videoId },
+	}));
+
+	return { paths, fallback: "blocking" };
+}
+
+export default function Video({ video }) {
+	const router = useRouter();
 
 	const { title, publishTime, description, channelTitle, viewCount } = video;
 
