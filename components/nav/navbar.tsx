@@ -7,23 +7,23 @@ import { magic } from "../../lib/magic-client";
 
 export default function NavBar() {
 	const [username, setUsername] = useState("");
-	useEffect(() => {
-		async function getUsername() {
-			try {
-				const { email } = await magic.user.getMetadata();
-				if (email) {
-					setUsername(email);
-					console.log({ email });
-				}
-			} catch (error) {
-				console.error("Error retrieving email:", error);
-			}
-		}
-		getUsername();
-	}, []);
-
 	const [showDropdown, setShowDropdown] = useState(false);
 	const router = useRouter();
+
+	// useEffect(() => {
+	// 	async function getUsername() {
+	// 		try {
+	// 			const { email } = await magic.user.getMetadata();
+	// 			if (email) {
+	// 				setUsername(email);
+	// 				console.log({ email });
+	// 			}
+	// 		} catch (error) {
+	// 			console.error("Error retrieving email:", error);
+	// 		}
+	// 	}
+	// 	getUsername();
+	// }, []);
 
 	const handleOnClickHome = (e) => {
 		e.preventDefault();
@@ -43,8 +43,8 @@ export default function NavBar() {
 	const handleSignOut = async (e) => {
 		e.preventDefault();
 		try {
-			await magic.user.logout();
-			console.log(await magic.user.isLoggedIn());
+			// await magic.user.logout();
+			// console.log(await magic.user.isLoggedIn());
 			router.push("/login");
 		} catch (error) {
 			console.error("Error logging out", error);
