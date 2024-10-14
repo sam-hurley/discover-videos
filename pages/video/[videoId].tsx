@@ -5,15 +5,14 @@ Modal.setAppElement("#__next");
 
 export default function Video() {
 	const router = useRouter();
-	console.log(router.query);
 	return (
-		<div>
-			video page {router.query.videoId}
+		<div className={styles.container}>
 			<Modal
 				isOpen={true}
 				contentLabel="Watch the video"
 				onRequestClose={() => router.back()}
 				overlayClassName={styles.overlay}
+				className={styles.modal}
 			>
 				<div>Modal Body</div>
 			</Modal>
