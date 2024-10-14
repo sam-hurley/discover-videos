@@ -2,20 +2,17 @@ import { useRouter } from "next/router";
 import styles from "../../styles/Video.module.css";
 import clsx from "classnames";
 import Modal from "react-modal";
+import { getYoutubeVideoById } from "@/lib/videos";
 Modal.setAppElement("#__next");
 
 export async function getStaticProps() {
-	const video = {
-		title: "Hi cute dog",
-		publishTime: "1990-01-01",
-		description: "A big red dogA big red dogA big red dogA big red dog",
-		channelTitle: "Paramount Pictures",
-		viewCount: 10000,
-	};
+	const videoId = "4zH5iYM4wJo";
+
+	const videoArray = await getYoutubeVideoById(videoId);
 
 	return {
 		props: {
-			video,
+			video: videoArray.length > 0 ? videoArray[0] : {},
 		},
 		revalidate: 60, // In seconds
 	};
@@ -33,7 +30,13 @@ export async function getStaticPaths() {
 export default function Video({ video }) {
 	const router = useRouter();
 
-	const { title, publishTime, description, channelTitle, viewCount } = video;
+	const {
+		title,
+		publishTime,
+		description,
+		channelTitle,
+		statistics: { viewCount },
+	} = video;
 
 	return (
 		<div className={styles.container}>
@@ -62,7 +65,7 @@ export default function Video({ video }) {
 						</div>
 						<div className={styles.col2}>
 							<p className={clsx(styles.subText, styles.subTextWrapper)}>
-								<span className={styles.textColor}>Cast:</span>
+								<span className={styles.textColor}>Cast: </span>
 								<span className={styles.channelTitle}>{channelTitle}</span>
 							</p>
 							<p className={clsx(styles.subText, styles.subTextWrapper)}>
