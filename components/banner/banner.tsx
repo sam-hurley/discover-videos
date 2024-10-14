@@ -1,12 +1,15 @@
 import Image from "next/image";
 import styles from "./banner.module.css";
 import { BannerType } from "@/Types";
+import { useRouter } from "next/router";
 
 const Banner = (props: BannerType) => {
-	const { title, subTitle, imgUrl } = props;
+	const { title, subTitle, imgUrl, videoId } = props;
+	const router = useRouter();
 
 	const handleOnPlay = () => {
 		console.log("handleOnPlay");
+		router.push(`/video/${videoId}`);
 	};
 
 	return (

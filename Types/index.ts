@@ -1,4 +1,5 @@
 export type BannerType = {
+	videoId: string;
 	title: string;
 	subTitle: string;
 	imgUrl: string;

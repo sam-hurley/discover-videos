@@ -28,10 +28,11 @@ export default function Home({
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<div className={styles.main}>
-				<NavBar username="samhurley@gmail.com" />
+				<NavBar />
 				<Banner
-					title={"Clifford the red dog"}
-					subTitle={"a very cute dog"}
+					videoId="4zH5iYM4wJo"
+					title="Clifford the red dog"
+					subTitle="a very cute dog"
 					imgUrl="/static/clifford.webp"
 				/>
 				<div className={styles.sectionWrapper}>
