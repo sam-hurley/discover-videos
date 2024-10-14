@@ -43,6 +43,14 @@ export const getVideos = (searchQuery) => {
 	return getCommonVideos(URL);
 };
 
+export const getPopularVideos = () => {
+	const URL =
+		"videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=US";
+
+	//videos?part=snippet%2CcontentDetails%2Cstatistics&id=Ks-_Mh1QhMc
+	return getCommonVideos(URL);
+};
+
 export const getYoutubeVideoById = (videoId) => {
 	const URL = `videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}`;
 	return getCommonVideos(URL);
