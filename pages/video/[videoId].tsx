@@ -5,8 +5,8 @@ import Modal from "react-modal";
 import { getYoutubeVideoById } from "@/lib/videos";
 Modal.setAppElement("#__next");
 
-export async function getStaticProps() {
-	const videoId = "4zH5iYM4wJo";
+export async function getStaticProps(context) {
+	const videoId = context.params.videoId;
 
 	const videoArray = await getYoutubeVideoById(videoId);
 
@@ -35,7 +35,7 @@ export default function Video({ video }) {
 		publishTime,
 		description,
 		channelTitle,
-		statistics: { viewCount },
+		statistics: { viewCount } = { viewCount: 0 },
 	} = video;
 
 	return (
